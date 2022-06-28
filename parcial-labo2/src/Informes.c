@@ -148,9 +148,6 @@ int Informe_generarInformeB(LinkedList *listArcade, LinkedList *listSalon) {
 	return rtn;
 }
 
-
-
-
 /**
  *  Un salón se encuentra completo si posee al menos 4 juegos del género plataforma,
  *	3 del género laberinto y 5 del género Aventura. Listar los salones que cumplan con este mínimo de requisito
@@ -159,7 +156,6 @@ int Informe_generarInformeB(LinkedList *listArcade, LinkedList *listSalon) {
 int Informe_generarInformeD(LinkedList* listSalon, LinkedList* listArcade, LinkedList* listJuego)
 {
 	int rtn = 1;
-
 	int counterPlat = 0;
 	int counterLab = 0;
 	int counterAv = 0;
@@ -173,6 +169,7 @@ int Informe_generarInformeD(LinkedList* listSalon, LinkedList* listArcade, Linke
 	Salon* auxSalon;
 	Juego* auxJuego;
 
+	int indexJuego;
 	if(listSalon != NULL && listArcade != NULL && listJuego != NULL)
 	{
 		rtn = 0;
@@ -187,18 +184,18 @@ int Informe_generarInformeD(LinkedList* listSalon, LinkedList* listArcade, Linke
 					if(auxArcade != NULL && Arcade_getIdSalon(auxArcade, &idSalonAux) &&
 							idSalon == idSalonAux && Arcade_getIdJuego(auxArcade, &idJuegoAux))
 					{
-						auxJuego = (Juego*)ll_get(listJuego, idJuegoAux);
-
+						indexJuego = controller_getIndexbyIdJuego(listJuego, idJuegoAux);
+						auxJuego = (Juego*)ll_get(listJuego, indexJuego);
 						if(auxJuego != NULL && Juego_getType(auxJuego, &type) == 1)
 						{
 
-							if(type == 2)
+							if(type == LABERINTO)
 							{
 								counterLab++;
-							} else if(type == 1)
+							} else if(type == PLATAFORMA)
 							{
 								counterPlat++;
-							} else if (type == 3)
+							} else if (type == AVENTURA)
 							{
 								counterAv++;
 							}
@@ -210,11 +207,8 @@ int Informe_generarInformeD(LinkedList* listSalon, LinkedList* listArcade, Linke
 				 *  Un salón se encuentra completo si posee al menos 4 juegos del género plataforma,
 				 *	3 del género laberinto y 5 del género Aventura. Listar los salones que cumplan con este mínimo de requisito
 				 */
-
-				printf("\nCOUNTERLABERINTO :%d \nCOUNTER PLATAF: %d \nCOUNTER AVEN: %d\n", counterLab, counterPlat, counterAv);
 			if(counterLab >= 3 && counterPlat >= 4 && counterAv >= 5)
 			{
-				puts("LEGUE");
 				Salon_printOne(auxSalon);
 			}
 				counterPlat = 0;
@@ -297,8 +291,6 @@ int Informe_generarInformeE(LinkedList* listSalon, LinkedList* listArcade, Linke
 		}
 	}
 
-
-
 	return rtn;
 }
 
@@ -328,7 +320,6 @@ int Informe_gerarInformeC(LinkedList* listSalon)
 	return rtn;
 
 }
-
 
 
 /**
@@ -438,7 +429,6 @@ int getMaxId(void* a, void* b)
 }
 
 
-
 /**
  * Listar los arcades que cumplan con sonido MONO y el género de su juego sea PLATAFORMA, informando nombre
 de juego, género y cantidad de jugadores que soporta el arcade. El listado deberá estar ordenado por nombre de juego.
@@ -472,6 +462,7 @@ int Informe_generarInformeG(LinkedList* listArcade, LinkedList* listJuego,int (*
 				}
 			}
 		}
+
 		rtn = 1;
 
 	}
@@ -513,3 +504,35 @@ int compareName(void* a, void* b)
 		return rtn;
 }
 
+
+/**
+ * Filtra los salones por ubicacion y devuelve una lista nueva
+ */
+
+int Informe_generarInformeZ(LinkedList* listJuegos)
+{
+	int rtn = -1;
+	LinkedList* newListSalon;
+	if(listJuegos != NULL)
+	{
+		newListSalon = ll_filter(listJuegos, filterByCompany);
+		controller_ListJuego(newListSalon);
+	}
+	return rtn;
+}
+
+int filterByCompany(void* pElement)
+{
+	int rtn = 0;
+	char company[LEN_COMPANY];
+
+	if(Juego_getcompanyName((Juego*)pElement,company) == 1)
+	{
+		if(strcmpi(company, "Sega") == 0)
+		{
+			rtn = 1;
+		}
+	}
+
+	return rtn;
+}

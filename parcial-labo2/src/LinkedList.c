@@ -551,3 +551,23 @@ int ll_sort(LinkedList* this, int (*pFunc)(void*,void*), int order)
     return returnAux;
 }
 
+LinkedList* ll_filter(LinkedList* this, int (*pFunc)(void* pElement))
+{
+	LinkedList* newLinkedlist  = NULL;
+
+	if (this != NULL && pFunc != NULL) {
+
+		newLinkedlist  = ll_newLinkedList();
+
+		if (newLinkedlist != NULL) {
+			for (int i = 0; i < ll_len(this); i++) {
+				void* auxElement = ll_get(this, i);
+				if (pFunc(auxElement) == 1) {
+					ll_add(newLinkedlist, auxElement);
+				}
+			}
+		}
+
+	}
+	return newLinkedlist;
+}

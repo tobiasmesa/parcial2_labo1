@@ -23,8 +23,11 @@ int Informe_gerarInformeC(LinkedList* listSalon);
 int Informe_generarInformeD(LinkedList* listSalon, LinkedList* listArcade, LinkedList* listJuego);
 int Informe_generarInformeE(LinkedList* listSalon, LinkedList* listArcade, LinkedList* listJuego);
 
-int getMaxId(void* a, void* b);
+int Informe_generarInformeZ(LinkedList* listJuegos);
+
 int Informe_generarInformeF(LinkedList* listSalon, LinkedList* listArcade, int (*pFunc)(void*,void*));
 int Informe_generarInformeG(LinkedList* listArcade, LinkedList* listJuego,int (*pFunc)(void*,void*));
 int compareName(void* a, void* b);
+int getMaxId(void* a, void* b);
+int filterByCompany(void* pElement);
 #endif /* INFORMES_H_ */

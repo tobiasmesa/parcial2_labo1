@@ -21,7 +21,9 @@ int main(void) {
 
 	setbuf(stdout, NULL);
 
-
+/**
+ * Agregar una funcion de filtro -> en linkedlist
+ */
 	LinkedList* llSalones = ll_newLinkedList();
 	LinkedList* llJuegos = ll_newLinkedList();
 	LinkedList* llArcades = ll_newLinkedList();
@@ -116,6 +118,7 @@ int main(void) {
 			break;
 		case 10:
 			utn_getAlfaNum(suboption, sizeof(suboption), "\n ------- SUBMENU ------\n"
+							"[Z] Filtrar los salones por Ubicacion.\n"
 							"[A] Listar los salones con más de 4 arcade.\n"
 							"[B] Listar los arcade para más de 2 jugadores.\n"
 							"[C] Listar toda la información de un salón en específico ingresado por el usuario.\n"
@@ -126,6 +129,10 @@ int main(void) {
 							"[0] Salir\nINGRESE UNA OPCION: ",
 					" \nERROR. REINGRESE: ", 3);
 					switch (*suboption) {
+						case 'Z':
+						case 'z':
+							Informe_generarInformeZ(llJuegos);
+							break;
 						case 'a':
 						case 'A':
 							Informe_gerarInformeA(llSalones, llArcades);
