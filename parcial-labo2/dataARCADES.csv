@@ -1,0 +1,12 @@
+id,nacionalidad,sonido,maxjugadores,maxfichas,idsalon,idjuego
+1022,ARG,Estereo,1,1230,127,4
+1027,CHINA,Estereo,4,123,127,8
+1028,JAPON,Estereo,2,23,127,6
+1033,CHINA,Mono,5,100,125,4
+1034,JAPON,Estereo,4,123,125,5
+1035,EEUU,Mono,12,1200,125,7
+1036,MEX,Estereo,1,200,125,6
+1037,ASIA,Estereo,5,100,125,4
+1038,CHINA,Mono,1,32,127,6
+1039,ARG,Mono,1,233,127,6
+1040,ARG,Mono,23,123,125,4

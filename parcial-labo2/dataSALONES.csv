@@ -1,0 +1,7 @@
+id,name,address,type
+122,Salon0,FakeAddress,Shopping
+123,Salon,FakeAddress,Local
+125,Salon1,Lomas,Shopping
+126,Salon4,ARG,Local
+127,Salon2,Callefalsa,Shopping
+129,Salon3,FakeAddress,Shopping
