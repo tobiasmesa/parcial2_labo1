@@ -451,14 +451,10 @@ int Informe_generarInformeG(LinkedList* listArcade, LinkedList* listJuego,int (*
 	LinkedList* cloneArcade = ll_newLinkedList();
 	Arcade* aux;
 	int typeSound;
-
 	Juego* auxjuego;
 	int idJuego;
-
 	int idJuegoArcade;
 	int typeJuego;
-
-
 	if(listArcade != NULL)
 	{
 		for(int i = 0; i < ll_len(listArcade); i++){
@@ -477,7 +473,7 @@ int Informe_generarInformeG(LinkedList* listArcade, LinkedList* listJuego,int (*
 			}
 		}
 		rtn = 1;
-		controller_ListArcade(cloneArcade);
+
 	}
 	return rtn;
 }

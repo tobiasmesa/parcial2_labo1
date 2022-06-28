@@ -479,7 +479,7 @@ int controller_ListArcade(LinkedList* pArrayListArcade)
 	int rtn = -1;
 	if(pArrayListArcade != NULL && ll_len(pArrayListArcade) > 0)
 	{
-		printf("%4s %12s %10s %5s %5s %5s %5s\n","ID","nationality","typeSound","maxPlayers", "MaxCoins", "ID SALON", "ID JUEGO");
+		printf("%4s |%12s |%10s |%10s |%10s |%10s |%10s\n","ID","nationality","typeSound","maxPlayers", "MaxCoins", "ID SALON", "ID JUEGO");
 		for(int i = 0; i < ll_len(pArrayListArcade); i++)
 		{
              Arcade_printOne((Arcade*)ll_get(pArrayListArcade, i));
